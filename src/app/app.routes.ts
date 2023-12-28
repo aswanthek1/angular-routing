@@ -6,6 +6,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductslistComponent } from './products/productslist/productslist.component';
 import { ProductsdetailsComponent } from './products/productsdetails/productsdetails.component';
 import { authGuard } from './guards/auth-guard.guard';
+import { ObservablesComponent } from './observables/observables.component';
 
 export const routes: Routes = [
     {path:'', title:'Home', component:FirstComponent},
@@ -13,6 +14,7 @@ export const routes: Routes = [
     {path:'contact', title:'Contact', component: ContactComponent},
     {path:'products', title:'Products', component: ProductslistComponent, canActivate:[authGuard]},
     {path:'products/:id', title:'Products', component: ProductsdetailsComponent, canActivate:[authGuard]},
+    {path:'obs', title:'Obs', component: ObservablesComponent},
     {path:'not-found', title:'Not Found', component:NotFoundComponent},
     {path:'**', component:NotFoundComponent}
 ];
