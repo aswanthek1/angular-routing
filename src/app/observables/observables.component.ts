@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Observable, filter, from, map, of } from 'rxjs';
+import { NewTaskComponent } from '../new-task/new-task.component';
+import { ShowTaskComponent } from '../show-task/show-task.component';
+import { SubjectComponent } from '../subject/subject.component';
 
 @Component({
   selector: 'app-observables',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NewTaskComponent, ShowTaskComponent, SubjectComponent],
   templateUrl: './observables.component.html',
   styleUrl: './observables.component.css'
 })
