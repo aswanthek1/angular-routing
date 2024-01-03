@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-productslist',
@@ -12,11 +12,22 @@ import { RouterModule } from '@angular/router';
 })
 export class ProductslistComponent implements OnInit {
   products: any[] = []
-  constructor(private store: ProductsService) {}
+  searchString!:string;
+  constructor(private store: ProductsService, private activeRoute:ActivatedRoute) {}
   
   ngOnInit(): void {
     this.store.getAllProducts().subscribe(products => {
-      this.products = products;
+      // this.searchString = this.activeRoute.snapshot.queryParamMap.get('search') || ''
+      this.activeRoute.queryParams.subscribe((data:any) => {
+        this.searchString = data['search']
+        if(this.searchString === undefined || this.searchString === '' || this.searchString === null) {
+          this.products = products;
+        }
+        else {
+          this.products = products.filter((item) => item.name.toLowerCase().includes(this.searchString.toLowerCase()))
+        }
+      })
     })
+
   }
 }

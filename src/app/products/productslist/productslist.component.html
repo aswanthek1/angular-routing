@@ -1,7 +1,8 @@
-<div class="container">
-    <div class="row" *ngFor="let product of products">
+<div class="container d-flex gap-5">
+    <div class="row row_class" *ngFor="let product of products">
         <a [routerLink]="['/products',product.id]">
             <h4>{{product.name}}</h4>
         </a>
     </div>
+    <a routerLink="/products" [queryParams]="{search:'piano'}" >Show Piano</a>
 </div>
