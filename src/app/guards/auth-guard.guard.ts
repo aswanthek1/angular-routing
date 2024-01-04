@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { AuthService } from '../Services/auth.service';
 import { Observable } from 'rxjs';
 import { IDeactivateInterface } from '../Services/guard.service';
+import { ProductsService } from '../products/products.service';
 
 export const canActivate: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const router: Router = inject(Router)
@@ -22,4 +23,9 @@ export const canActivateChildFn: CanActivateChildFn = (childRoute: ActivatedRout
 
 export const canDeactivate: CanDeactivateFn<IDeactivateInterface> = (component: IDeactivateInterface, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> => {
   return component.canExit();
+}
+
+export const resolve = () => {
+  const productService:ProductsService = inject(ProductsService);
+  return productService.getAllProducts()
 }

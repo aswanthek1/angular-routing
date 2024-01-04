@@ -5,7 +5,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductslistComponent } from './products/productslist/productslist.component';
 import { ProductsdetailsComponent } from './products/productsdetails/productsdetails.component';
-import { canActivate, canActivateChildFn, canDeactivate } from './guards/auth-guard.guard';
+import { canActivate, canActivateChildFn, canDeactivate, resolve } from './guards/auth-guard.guard';
 import { ObservablesComponent } from './observables/observables.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { LoginComponent } from './login/login.component';
@@ -15,7 +15,7 @@ export const routes: Routes = [
     {path:'', title:'Home', component:FirstComponent},
     {path:'second', title:'Second' ,component:SecondComponent},
     {path:'contact', title:'Contact', component: ContactComponent, canDeactivate:[canDeactivate]},
-    {path:'products', title:'Products', component: ProductslistComponent},
+    {path:'products', title:'Products', component: ProductslistComponent, resolve:{products:resolve}},
     // {path:'products/:id', title:'Products', component: ProductsdetailsComponent, canActivate:[canActivate]},
     {path: 'products', canActivateChild:[canActivateChildFn], children: [
         {path:':id', component:ProductsdetailsComponent},

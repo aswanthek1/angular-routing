@@ -33,6 +33,9 @@
  </div>
  <div class="mt-5">
    <router-outlet></router-outlet>
+   <div class="overlay" *ngIf="showLoader">
+    <div class="loader"></div>
+   </div>
  </div>
 </main>
 
