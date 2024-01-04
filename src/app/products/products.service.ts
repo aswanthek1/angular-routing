@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { ProductsModel } from '../Models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  private data: any[] = [
+  private data: ProductsModel[] = [
     {id: 1, name: "Guitar", price: 1000},
     {id: 2, name: "Piano", price: 5000},
     {id: 3, name: "Drums", price: 1200 }
@@ -15,7 +16,12 @@ export class ProductsService {
   constructor() { }
 
   getAllProducts() {
-    return of(this.data);
+    // return of(this.data);
+   return new Observable((sub) => {
+      setTimeout(() => {
+        sub.next(this.data)
+      }, 3000);
+    })
   }
 
   getProduct(id:number) {
