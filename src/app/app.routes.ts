@@ -5,7 +5,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductslistComponent } from './products/productslist/productslist.component';
 import { ProductsdetailsComponent } from './products/productsdetails/productsdetails.component';
-import { authGuard } from './guards/auth-guard.guard';
+import { canActivate, canActivateChildFn } from './guards/auth-guard.guard';
 import { ObservablesComponent } from './observables/observables.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { LoginComponent } from './login/login.component';
@@ -16,10 +16,10 @@ export const routes: Routes = [
     {path:'second', title:'Second' ,component:SecondComponent},
     {path:'contact', title:'Contact', component: ContactComponent},
     {path:'products', title:'Products', component: ProductslistComponent},
-    // {path:'products/:id', title:'Products', component: ProductsdetailsComponent, canActivate:[authGuard]},
-    {path: 'products', children: [
+    // {path:'products/:id', title:'Products', component: ProductsdetailsComponent, canActivate:[canActivate]},
+    {path: 'products', canActivateChild:[canActivateChildFn], children: [
         {path:':id', component:ProductsdetailsComponent},
-        {path:'product/checkout', component:CheckoutComponent, canActivate:[authGuard]}
+        {path:'product/checkout', component:CheckoutComponent, canActivate:[canActivate]}
     ]},
     {path:'obs', title:'Obs', component: ObservablesComponent},
     {path:'obs/unsubscribe', title:'unsub', component: UnsubscribeComponent},
