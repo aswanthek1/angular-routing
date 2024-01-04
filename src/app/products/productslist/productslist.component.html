@@ -1,8 +1,12 @@
 <div class="container d-flex gap-5">
     <div class="row row_class" *ngFor="let product of products">
-        <a [routerLink]="['/products',product.id]">
+        <a >
             <h4>{{product.name}}</h4>
         </a>
+        <div class="action-container d-flex justify-content-between">
+            <button class="btn btn-outline-success btn-sm" routerLink="product/checkout" >Buy Now</button>
+            <button class="btn btn-outline-danger btn-sm" [routerLink]="['/products',product.id]">Details</button>
+        </div>
     </div>
-    <a routerLink="/products" [queryParams]="{search:'piano'}" >Show Piano</a>
+    <!-- <a routerLink="/products" [queryParams]="{search:'piano'}" >Show Piano</a> -->
 </div>

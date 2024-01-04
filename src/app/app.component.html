@@ -28,7 +28,7 @@
     <a class="nav_link" routerLink="products" [routerLinkActive]="'active'"  >Products</a>
     <a class="nav_link" routerLink="obs" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" >Observable</a>
     <a class="nav_link" routerLink="obs/unsubscribe" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" >Unsubscribe</a>
-    <a class="nav_link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" (click)="$event.preventDefault(); goToContact()" >Contact</a>
+    <a class="nav_link" routerLink="/contact" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" (click)="$event.preventDefault(); goToContact()" >Contact</a>
   </div>
  </div>
  <div class="mt-5">
