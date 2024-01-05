@@ -4,7 +4,7 @@
             <h4>{{product.name}}</h4>
         </a>
         <div class="action-container d-flex justify-content-between">
-            <button class="btn btn-outline-success btn-sm" routerLink="product/checkout" >Buy Now</button>
+            <button class="btn btn-outline-success btn-sm" routerLink="product/checkout"  [state]="product" >Buy Now</button>
             <button class="btn btn-outline-danger btn-sm" [routerLink]="['/products',product.id]">Details</button>
         </div>
     </div>
